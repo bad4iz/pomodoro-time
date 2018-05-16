@@ -2,16 +2,25 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <img src="../../static/img/v.png" alt="Vuetify.js" class="mb-5">
-        <blockquote>
-          &#8220;First, solve the problem. Then, write the code.&#8221;
-          <footer>
-            <small>
-              <em>&mdash;John Johnson</em>
-            </small>
-          </footer>
-        </blockquote>
+       <div class="circle">
+         <div class="str"></div>
+       </div>
       </v-layout>
     </v-slide-y-transition>
   </v-container>
 </template>
+
+<style>
+  .circle{
+    background-color: red;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+  }
+  .srt{
+    width: 12px;
+    height: 100px;
+    background-color: black;
+    margin: auto;
+  }
+</style>
