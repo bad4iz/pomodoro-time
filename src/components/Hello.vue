@@ -35,10 +35,11 @@
 // eslint-disable-next-line no-unused-vars
         function moveAt(event) {
           // console.log((event.layerX - (width / 2)), (event.layerY - (height / 2)));
-          const x = event.layerX - (width / 2),
-            y = event.layerY - (height / 2);
+          const x = event.layerX,
+            y = event.layerY;
 
-          console.log((Math.cos(x) - Math.sin(x)) * 360);
+          const answer = (((Math.sin(x / 500) * Math.cos(y / 500)) + (Math.sin(y / 500) * Math.cos(x / 500))) * 360);
+          console.log(answer);
 
 
 
@@ -46,7 +47,7 @@
 // eslint-disable-next-line no-mixed-operators
 //           console.log(Math.tan(event.pageX - circle.offsetWidth));
 
-          circle.style.transform = `rotate(${20}deg)`;
+          circle.style.transform = `rotate(${answer}deg)`;
         }
 
         document.onmousemove = (event) => {
