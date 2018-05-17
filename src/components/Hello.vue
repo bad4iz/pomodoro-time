@@ -10,7 +10,7 @@
   </v-container>
 </template>
 <script>
-  /* eslint-disable no-shadow */
+  /* eslint-disable no-shadow,no-multiple-empty-lines,no-trailing-spaces,max-len,one-var,no-unused-vars */
 
   export default {
     data() {
@@ -24,14 +24,31 @@
     mounted() {
       const circle = document.querySelector('.circle');
       circle.ondragstart = () => false;
+// eslint-disable-next-line one-var
+      const style = getComputedStyle(circle),
+        width = style.width.replace('px', ''),
+        height = style.height.replace('px', '');
       circle.onmousedown = (event) => {
         circle.style.position = 'absolute';
         console.log(event);
+
+// eslint-disable-next-line no-unused-vars
         function moveAt(event) {
+          // console.log((event.layerX - (width / 2)), (event.layerY - (height / 2)));
+          const x = event.layerX - (width / 2),
+            y = event.layerY - (height / 2);
+
+          console.log((Math.cos(x) - Math.sin(x)) * 360);
+
+
+
+
 // eslint-disable-next-line no-mixed-operators
-          console.log(`${event.pageX - circle.offsetWidth / 2}px`);
+//           console.log(Math.tan(event.pageX - circle.offsetWidth));
+
           circle.style.transform = `rotate(${20}deg)`;
         }
+
         document.onmousemove = (event) => {
           moveAt(event);
         };
