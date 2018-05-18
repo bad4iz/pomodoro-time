@@ -21,31 +21,35 @@
     created() {
 
     },
+// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line one-var
+// eslint-disable-next-line no-mixed-operators
+
     mounted() {
       const circle = document.querySelector('.circle');
       circle.ondragstart = () => false;
-// eslint-disable-next-line one-var
+
       const style = getComputedStyle(circle),
         width = style.width.replace('px', ''),
         height = style.height.replace('px', '');
+
       circle.onmousedown = (event) => {
         circle.style.position = 'absolute';
-        console.log(event);
+        const Xold = event.layerX,
+          Yold = event.layerY;
 
-// eslint-disable-next-line no-unused-vars
+
         function moveAt(event) {
-          // console.log((event.layerX - (width / 2)), (event.layerY - (height / 2)));
-          const x = event.layerX,
-            y = event.layerY;
+          // console.log('two', event.layerX);
+          console.log((event.layerX - (width / 2)), (event.layerY - (height / 2)));
+          const x = Xold - event.layerX,
+            y = Yold - event.layerY;
 
           const answer = (((Math.sin(x / 500) * Math.cos(y / 500)) + (Math.sin(y / 500) * Math.cos(x / 500))) * 360);
           console.log(answer);
 
 
-
-
-// eslint-disable-next-line no-mixed-operators
-//           console.log(Math.tan(event.pageX - circle.offsetWidth));
+          console.log(Math.tan(event.pageX - circle.offsetWidth));
 
           circle.style.transform = `rotate(${answer}deg)`;
         }
